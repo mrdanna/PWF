@@ -28,6 +28,12 @@ class AuthController extends Controller
         ]);
     }
 
+    public function user()
+    {
+        $user = User::all();
+        return response()->json($user);
+    }
+
     public function login(Request $request){
         $user = User::where('email', $request->email)->first();
 

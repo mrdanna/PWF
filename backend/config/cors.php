@@ -15,20 +15,35 @@ return [
     |
     */
 
+    // config/cors.php
+    // 'paths' => ['api/*'],
+    // 'allowed_origins' => ['http://localhost:3000'],
+    // 'allowed_methods' => ['*'],
+    // 'allowed_headers' => ['*'],
+
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
-
     'allowed_methods' => ['*'],
-
-    'allowed_origins' => ['*'],
-
-    'allowed_origins_patterns' => [],
-
+    'allowed_origins' => ['http://localhost:3000'],
     'allowed_headers' => ['*'],
+    'supports_credentials' => true,
 
-    'exposed_headers' => [],
+    // 'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'max_age' => 0,
+    // 'allowed_methods' => ['*'],
 
-    'supports_credentials' => false,
+    // //'allowed_origins' => ['*'],
+    // 'allowed_origins' => ['http://localhost:3000'],
+
+    // 'credentials' => true,
+
+    // 'allowed_origins_patterns' => [],
+
+    // 'allowed_headers' => ['*'],
+
+    // 'exposed_headers' => [],
+
+    // 'max_age' => 0,
+
+    // 'supports_credentials' => true,
 
 ];

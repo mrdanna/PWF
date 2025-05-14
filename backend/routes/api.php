@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/user', [AuthController::class, 'user']);
 Route::post('/login', [AuthController::class, 'login']);
 
 // Route yang dilindungi
