@@ -16,12 +16,18 @@ const api = axios.create({
   withCredentials: true,
 });
 
-// Tambahkan CSRF token ke header
-api.interceptors.request.use(config => {
-  const token = Cookies.get('XSRF-TOKEN');
-  if (token) {
-    config.headers['X-XSRF-TOKEN'] = token;
+api.interceptors.request.use((config) => {
+  const csrfToken = Cookies.get('XSRF-TOKEN');
+  const authToken = localStorage.getItem('token'); // Ambil dari localStorage
+
+  if (csrfToken) {
+    config.headers['X-XSRF-TOKEN'] = csrfToken;
   }
+
+  if (authToken) {
+    config.headers['Authorization'] = `Bearer ${authToken}`;
+  }
+
   return config;
 });
 

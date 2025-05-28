@@ -3,22 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import api from '../../../axios';
 import '../../../assets/css/dashboard.css';
 
-import Header from '../layout/Header';
-import Sidebar from '../layout/Sidebar';
-import MainContent from '../layout/MainContent';
-import Footer from '../layout/Footer';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import MainContent from './MainContent';
+import Footer from './Footer';
 
-function Home({ onLogout }) {
+function Dashboard({ onLogout = () => {} }) {
   const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [username, setUsername] = useState('');
   const dropdownRef = useRef(null);
 
   const handleLogout = async () => {
     try {
       await api.post('/api/logout');
       localStorage.removeItem('token');
-      if (onLogout) onLogout();
+      onLogout();
       navigate('/');
     } catch (error) {
       console.error('Logout gagal:', error);
@@ -37,21 +36,6 @@ function Home({ onLogout }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const response = await api.get('/api/profile');
-        setUsername(response.data.name);
-      } catch (error) {
-        console.error('Gagal mengambil data user:', error);
-        if (onLogout) onLogout();
-        navigate('/');
-      }
-    };
-
-    fetchUserProfile();
-  });
-
   return (
     <div className="dashboard-wrapper">
       <Header
@@ -59,7 +43,6 @@ function Home({ onLogout }) {
         dropdownOpen={dropdownOpen}
         dropdownRef={dropdownRef}
         handleLogout={handleLogout}
-        username={username}
       />
       <div style={{ display: 'flex', flex: 1 }}>
         <Sidebar />
@@ -70,4 +53,4 @@ function Home({ onLogout }) {
   );
 }
 
-export default Home;
+export default Dashboard;

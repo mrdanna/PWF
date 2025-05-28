@@ -1,80 +1,107 @@
-/* Container utama dengan sidebar dan konten */
-.dashboard-container {
+.dashboard-wrapper {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  font-family: Arial, sans-serif;
 }
 
-/* Sidebar */
-.sidebar {
-  width: 220px;
-  background-color: #2c3e50;
-  color: #ecf0f1;
+.dashboard-header {
+  background: #007bff;
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h2 {
+  margin: 0;
+}
+
+.dashboard-dropdown {
+  position: relative;
+}
+
+.dashboard-dropdown-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.dashboard-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  color: #000;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+  padding: 10px;
+}
+
+.dashboard-dropdown-menu button {
+  background: #fff;
+  color: #dc3545;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.dashboard-sidebar {
+  width: 240px;
+  background: #f1f3f5;
+  border-right: 1px solid #dee2e6;
   padding: 20px;
-  box-sizing: border-box;
+  box-shadow: inset -1px 0 0 #dee2e6;
 }
 
-.sidebar h3 {
-  margin-top: 0;
-  font-size: 20px;
-  margin-bottom: 15px;
+.dashboard-sidebar h4 {
+  margin-bottom: 20px;
+  color: #343a40;
 }
 
-.sidebar ul {
+.dashboard-sidebar ul {
   list-style: none;
   padding: 0;
 }
 
-.sidebar li {
+.dashboard-sidebar li {
   margin-bottom: 10px;
 }
 
-.sidebar button {
-  background: none;
+.dashboard-sidebar button {
+  background: transparent;
   border: none;
-  color: #ecf0f1;
-  font-size: 16px;
+  color: #343a40;
+  text-align: left;
   cursor: pointer;
-  padding: 5px;
-  transition: background 0.3s;
+  font-size: 16px;
+  width: 100%;
 }
 
-.sidebar button:hover {
-  background-color: #34495e;
-  border-radius: 5px;
+.dashboard-sidebar button i {
+  margin-right: 8px;
 }
 
-/* Konten utama */
-main {
+.dashboard-main {
   flex: 1;
   padding: 30px;
-  background-color: #ecf0f1;
-  box-sizing: border-box;
+  background: #f8f9fa;
 }
 
-main h1 {
-  margin-top: 0;
-  margin-bottom: 20px;
+.dashboard-main h1 {
+  color: #343a40;
 }
 
-/* Tabel */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #fff;
-}
-
-th, td {
-  padding: 12px;
-  border: 1px solid #bdc3c7;
-  text-align: left;
-}
-
-th {
-  background-color: #3498db;
-  color: white;
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+.dashboard-footer {
+  background: #007bff;
+  color: #fff;
+  padding: 10px 30px;
+  text-align: center;
 }

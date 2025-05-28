@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 import api from '../../axios';
 import '../../assets/css/login.css';
 
@@ -8,6 +8,7 @@ function LoginForm({ onLoginSuccess }) {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false); // State untuk loading
+  const navigate = useNavigate(); // Inisialisasi navigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +27,9 @@ function LoginForm({ onLoginSuccess }) {
         localStorage.setItem('token', response.data.token);  // Menyimpan token
         setMessage('Login berhasil!');
         onLoginSuccess && onLoginSuccess();  // Panggil callback setelah login berhasil
+
+         // Redirect ke halaman /home
+        navigate('/dashboard'); // ← Redirect setelah login sukses
       }
     } catch (error) {
       setLoading(false);  // Selesai loading
